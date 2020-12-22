@@ -12,6 +12,7 @@ node {
 
     stage('Test Execution') {
         try {
+            sh "java -jar target/selenium-java-lean-test-achitecture-1.0.7.jar"
             sh "'${mvnHome}/bin/mvn' test -Pweb-execution -Dtarget=local -Dsuite=local -Dtestng.dtd.http=true -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true"
         } catch (Exception e) {
             currentBuild.result = 'FAILURE'
